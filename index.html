@@ -1681,44 +1681,6 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-/* ============ COVERAGE FORM ============ */
-const coverageForm = document.getElementById('coverageForm');
-const modal = document.getElementById('modal');
-const modalIc = document.getElementById('modalIc');
-const modalTitle = document.getElementById('modalTitle');
-const modalText = document.getElementById('modalText');
-
-coverageForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const area = document.getElementById('fArea').value;
-  const addr = document.getElementById('fAddr').value.trim();
-  
-  const validAreas = ['Sukamelang', 'Cibarola', 'Panglejar', 'Perum'];
-  const covered = validAreas.includes(area);
-  if(covered){
-    modalIc.className = 'modal-ic success';
-    modalIc.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>';
-    modalTitle.textContent = '✓ AREA TERJANGKAU';
-    modalText.textContent = `Selamat! Area ${area} sudah tercover jaringan RnB.NET. Hubungi kami via WhatsApp untuk proses pendaftaran.`;
-  } else {
-    modalIc.className = 'modal-ic fail';
-    modalIc.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>';
-    modalTitle.textContent = '× BELUM TERJANGKAU';
-    modalText.textContent = 'Mohon pilih area yang tersedia (Sukamelang, Cibarola, Panglejar, atau Perum). Kami terus berkembang!';
-  }
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-});
-
-function closeModal(){
-  modal.classList.remove('open');
-  document.body.style.overflow = '';
-}
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('modalOk').addEventListener('click', closeModal);
-modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
-document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
-
 /* ============ CAROUSEL ============ */
 function setupCarousel(trackId, prevId, nextId){
   const track = document.getElementById(trackId);
